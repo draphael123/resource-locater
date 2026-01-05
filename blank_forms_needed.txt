@@ -1,0 +1,146 @@
+BLANK APPLICATION FORMS NEEDED
+================================================================================
+
+Arizona (AZ) - RN - Initial
+  Search: 'Arizona RN Initial application blank form'
+  Board: Arizona Board of Nursing
+
+California (CA) - MD - Initial
+  Search: 'California MD Initial application blank form'
+  Board: California Board of Medical Practice
+
+California (CA) - NP - Initial
+  Search: 'California NP Initial application blank form'
+  Board: California Board of Nursing
+
+California (CA) - RN - Initial
+  Search: 'California RN Initial application blank form'
+  Board: California Board of Nursing
+
+California (CA) - RN - Renewal
+  Search: 'California RN Renewal application blank form'
+  Board: California Board of Nursing
+
+Colorado (CO) - NP - Renewal
+  Search: 'Colorado NP Renewal application blank form'
+  Board: Colorado Board of Nursing
+
+Colorado (CO) - None - Renewal
+  Search: 'Colorado None Renewal application blank form'
+
+Hawaii (HI) - RN - Initial
+  Search: 'Hawaii RN Initial application blank form'
+  Board: Hawaii Board of Nursing
+
+Hawaii (HI) - RN - Renewal
+  Search: 'Hawaii RN Renewal application blank form'
+  Board: Hawaii Board of Nursing
+
+Illinois (IL) - CSR - None
+  Search: 'Illinois CSR None application blank form'
+  Board: Illinois Board of Pharmacy or Medical Board
+
+Illinois (IL) - NP - Initial
+  Search: 'Illinois NP Initial application blank form'
+  Board: Illinois Board of Nursing
+
+Illinois (IL) - RN - Initial
+  Search: 'Illinois RN Initial application blank form'
+  Board: Illinois Board of Nursing
+
+Indiana (IN) - CSR - Initial
+  Search: 'Indiana CSR Initial application blank form'
+  Board: Indiana Board of Pharmacy or Medical Board
+
+Indiana (IN) - CSR - Renewal
+  Search: 'Indiana CSR Renewal application blank form'
+  Board: Indiana Board of Pharmacy or Medical Board
+
+Indiana (IN) - MD - Renewal
+  Search: 'Indiana MD Renewal application blank form'
+  Board: Indiana Board of Medical Practice
+
+Massachusetts (MA) - None - None
+  Search: 'Massachusetts None None application blank form'
+
+Maryland (MD) - MD - None
+  Search: 'Maryland MD None application blank form'
+  Board: Maryland Board of Medical Practice
+
+Maryland (MD) - NP - None
+  Search: 'Maryland NP None application blank form'
+  Board: Maryland Board of Nursing
+
+Maine (ME) - NP - Initial
+  Search: 'Maine NP Initial application blank form'
+  Board: Maine Board of Nursing
+
+Michigan (MI) - NP - Initial
+  Search: 'Michigan NP Initial application blank form'
+  Board: Michigan Board of Nursing
+
+Michigan (MI) - RN - Initial
+  Search: 'Michigan RN Initial application blank form'
+  Board: Michigan Board of Nursing
+
+Minnesota (MN) - NP - Initial
+  Search: 'Minnesota NP Initial application blank form'
+  Board: Minnesota Board of Nursing
+
+North Dakota (ND) - NP - Initial
+  Search: 'North Dakota NP Initial application blank form'
+  Board: North Dakota Board of Nursing
+
+New Jersey (NJ) - CDS - Renewal
+  Search: 'New Jersey CDS Renewal application blank form'
+  Board: New Jersey Board of Pharmacy or Medical Board
+
+New Jersey (NJ) - CSR - Renewal
+  Search: 'New Jersey CSR Renewal application blank form'
+  Board: New Jersey Board of Pharmacy or Medical Board
+
+New Mexico (NM) - CSR - Initial
+  Search: 'New Mexico CSR Initial application blank form'
+  Board: New Mexico Board of Pharmacy or Medical Board
+
+Ohio (OH) - NP - Renewal
+  Search: 'Ohio NP Renewal application blank form'
+  Board: Ohio Board of Nursing
+
+Ohio (OH) - RN - Renewal
+  Search: 'Ohio RN Renewal application blank form'
+  Board: Ohio Board of Nursing
+
+Pennsylvania (PA) - NP - Initial
+  Search: 'Pennsylvania NP Initial application blank form'
+  Board: Pennsylvania Board of Nursing
+
+Pennsylvania (PA) - NP - Renewal
+  Search: 'Pennsylvania NP Renewal application blank form'
+  Board: Pennsylvania Board of Nursing
+
+South Dakota (SD) - NP - Initial
+  Search: 'South Dakota NP Initial application blank form'
+  Board: South Dakota Board of Nursing
+
+Utah (UT) - NP - Initial
+  Search: 'Utah NP Initial application blank form'
+  Board: Utah Board of Nursing
+
+Virginia (VA) - None - Initial
+  Search: 'Virginia None Initial application blank form'
+
+Washington (WA) - NP - Initial
+  Search: 'Washington NP Initial application blank form'
+  Board: Washington Board of Nursing
+
+Unknown (None) - NP - None
+  Search: 'Unknown NP None application blank form'
+  Board: Unknown Board of Nursing
+
+Unknown (None) - None - Initial
+  Search: 'Unknown None Initial application blank form'
+
+Unknown (None) - None - None
+  Search: 'Unknown None None application blank form'
+

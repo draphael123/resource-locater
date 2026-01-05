@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State License Application Forms Directory</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 30px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .search-box {
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        #searchInput {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px 20px;
+            font-size: 1em;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        #searchInput:focus {
+            border-color: #667eea;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .form-card {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+        
+        .form-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .form-badge {
+            background: #667eea;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            white-space: nowrap;
+        }
+        
+        .form-info {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        
+        .board-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 5px 5px 5px 0;
+            font-size: 0.9em;
+            transition: background 0.3s;
+        }
+        
+        .board-link:hover {
+            background: #764ba2;
+        }
+        
+        .search-results {
+            margin-top: 15px;
+        }
+        
+        .search-results-title {
+            font-size: 0.85em;
+            color: #888;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .search-link {
+            display: block;
+            color: #667eea;
+            text-decoration: none;
+            padding: 5px 0;
+            font-size: 0.85em;
+            border-bottom: 1px solid #eee;
+            transition: color 0.3s;
+        }
+        
+        .search-link:hover {
+            color: #764ba2;
+            padding-left: 5px;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-size: 1.2em;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 State License Application Forms</h1>
+            <p class="subtitle">Complete directory of blank application forms for healthcare professionals</p>
+            <div class="stats" id="stats">
+                <div class="stat-box">
+                    <div class="stat-number" id="totalForms">0</div>
+                    <div class="stat-label">Total Forms</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="totalStates">0</div>
+                    <div class="stat-label">States</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="totalTypes">0</div>
+                    <div class="stat-label">License Types</div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Search by state, license type, or application type...">
+        </div>
+        
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="RN">RN</button>
+            <button class="filter-btn" data-filter="NP">NP</button>
+            <button class="filter-btn" data-filter="MD">MD</button>
+            <button class="filter-btn" data-filter="CSR">CSR</button>
+            <button class="filter-btn" data-filter="Initial">Initial</button>
+            <button class="filter-btn" data-filter="Renewal">Renewal</button>
+        </div>
+        
+        <div class="form-grid" id="formGrid">
+            <!-- Forms will be inserted here by JavaScript -->
+        </div>
+        
+        <div class="no-results" id="noResults" style="display: none;">
+            No forms found matching your search criteria.
+        </div>
+        
+        <footer>
+            <p>Last updated: <span id="lastUpdated"></span></p>
+            <p>This directory provides links to official state board websites and search results for blank application forms.</p>
+            <p style="margin-top: 10px; font-size: 0.85em; color: #999;">
+                Note: Always verify form versions and requirements on the official state board websites.
+            </p>
+        </footer>
+    </div>
+    
+    <script>
+        let allForms = [];
+        let filteredForms = [];
+        
+        // Embedded form data (loaded directly to avoid CORS issues)
+        const embeddedFormData = [
+  {
+    "state": "AZ",
+    "state_name": "Arizona",
+    "license_type": "RN",
+    "app_type": "Initial",
+    "board_url": "https://www.azbn.gov",
+    "search_results": [
+      {
+        "title": "License/Certification Forms | Board of Nursing - AZBN",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.azbn.gov%2Flicenses%2Dand%2Dcertifications%2Flicensecertification%2Dforms&rut=ccc9ab2d064824edb5f46e5a552306339995f631978d1d26aedfecb6f1b09a39"
+      },
+      {
+        "title": "Arizona Board Of Nursing License Form • PDF Template",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Farizonapdfs.com%2Farizona%2Dboard%2Dof%2Dnursing%2Dlicense%2Dtemplate%2F&rut=30a4bce3ed7f0a04019d063bb4d9b9fed13bdaf8dcc9d31ecb41466d260959cb"
+      },
+      {
+        "title": "Arizona Board Of Nursing License PDF Form - FormsPal",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fformspal.com%2Fpdf%2Dforms%2Fother%2Farizona%2Dboard%2Dof%2Dnursing%2Dlicense%2F&rut=7733ed3a77bcb4911e8697cdf725bb9ec3a89a6f8c1962caf1ccd54d828d4570"
+      },
+      {
+        "title": "Free Arizona Board Of Nursing License PDF Template AZ Forms Online",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fazformsonline.com%2Farizona%2Dboard%2Dof%2Dnursing%2Dlicense%2F&rut=f4dd7f64e7f4b937276654a5ac2e8b139f86394c2d28256ab67cda7f44ab4f32"
+      },
+      {
+        "title": "Download Arizona Board Of Nursing License Form • TemplatesOwl",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Ftemplatesowl.com%2Fprintable%2Dpdf%2Dforms%2Farizona%2Dboard%2Dof%2Dnursing%2Dlicense%2F&rut=e2e69f891b7fd0814268205bea74c3b702dc2e3993744cbb4dfe85c7dc44794f"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.azbn.gov/applications",
+      "https://www.azbn.gov/forms",
+      "https://www.azbn.gov/licensing",
+      "https://www.azbn.gov/apply",
+      "https://www.azbn.gov/downloads"
+    ]
+  },
+  {
+    "state": "CA",
+    "state_name": "California",
+    "license_type": "MD",
+    "app_type": "Initial",
+    "board_url": "https://www.mbc.ca.gov",
+    "search_results": [
+      {
+        "title": "Applicants Forms | Medical Board of California",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fmbc.ca.gov%2FResources%2FForms%2FApplicants.aspx&rut=633f6042bf8a5d76719ae7d57000dfd336887b01a7e1d5b645db9d819cb4d01b"
+      },
+      {
+        "title": "PDFPhysician's & Surgeon's License Application - Forms L1A-L1F",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fd2l2jhoszs7d12.cloudfront.net%2Fstate%2FCA%2FThe%2520Medical%2520Board%2520of%2520California%2Fwww.mbc.ca.gov%2FApplicants%2FPhysicians%2520and%2520Surgeons%2Fapplication_forms_l1a%2Dl1f.pdf&rut=2a5e2b23830647c8870426424ab323b9a05a731d18536bc9480614c49dd358ab"
+      },
+      {
+        "title": "PDFCalifornia Participating Physician",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fecreds.nmhsc.com%2FeCredsCustomers%2FApplication%2520Forms%2520%2D%2520Non%2520HSC%2FCalifornia%2520Initial%2520Credentialing%2520Application.pdf&rut=7f9289bc5d14d5f6959fa7d5c0ba24e129fff6a4332b3488398bb8469bab8735"
+      },
+      {
+        "title": "Form L1 Download Fillable PDF or Fill Online Application for a ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.templateroller.com%2Fgroup%2F20122%2Fform%2Dl1%2Dapplication%2Dfor%2Da%2Dphysician%2Ds%2Dand%2Dsurgeon%2Ds%2Dlicense%2Dcalifornia.html&rut=62eec41273ff61bb757414c3400a19657787f6d93ee477a84146e0dbc759ec45"
+      },
+      {
+        "title": "L1A - L1E License Application Forms - The Medical Board Of California ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.uslegalforms.com%2Fform%2Dlibrary%2F297049%2Dl1a%2Dl1e%2Dlicense%2Dapplication%2Dforms%2Dthe%2Dmedical%2Dboard%2Dof%2Dcalifornia%2Dmbc%2Dca&rut=469835ffffe089e14de2d37f0ca08aee98e521fd63499da6faafae73e534eaa2"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.mbc.ca.gov/applications",
+      "https://www.mbc.ca.gov/forms",
+      "https://www.mbc.ca.gov/licensing",
+      "https://www.mbc.ca.gov/apply",
+      "https://www.mbc.ca.gov/downloads"
+    ]
+  },
+  {
+    "state": "CA",
+    "state_name": "California",
+    "license_type": "NP",
+    "app_type": "Initial",
+    "board_url": "https://www.rn.ca.gov",
+    "search_results": [
+      {
+        "title": "PDFGeneral Instructions for Applying for Nurse Practitioner (NP) Certification",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.rn.ca.gov%2Fpdfs%2Fapplicants%2Fnp%2Dinstruct.pdf&rut=cb9c42ade6e133efdd007b1e9f94e7b5acb9f57ad58082f2c793ff6c13249f3a"
+      },
+      {
+        "title": "PDFCalifornia Participating Physician",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fecreds.nmhsc.com%2FeCredsCustomers%2FApplication%2520Forms%2520%2D%2520Non%2520HSC%2FCalifornia%2520Initial%2520Credentialing%2520Application.pdf&rut=7f9289bc5d14d5f6959fa7d5c0ba24e129fff6a4332b3488398bb8469bab8735"
+      },
+      {
+        "title": "State Nurse Practitioner Licensure Forms - Office of Certification ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Facademicguides.waldenu.edu%2Ffieldexperience%2Fson%2Foclc%2FstateNPlicensureforms&rut=9ccd9d8f275cda231e22c25fc795c35d0d535809011722671f020c1ccf06aeb6"
+      },
+      {
+        "title": "Forms",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.rn.ca.gov%2Fforms%2Fforms.shtml&rut=fe99de740a7f715d0b29ae4c1f2bf133787819363851cf9644a8704944e5eec3"
+      },
+      {
+        "title": "Applicants Forms | Medical Board of California",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fmbc.ca.gov%2FResources%2FForms%2FApplicants.aspx&rut=633f6042bf8a5d76719ae7d57000dfd336887b01a7e1d5b645db9d819cb4d01b"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.rn.ca.gov/applications",
+      "https://www.rn.ca.gov/forms",
+      "https://www.rn.ca.gov/licensing",
+      "https://www.rn.ca.gov/apply",
+      "https://www.rn.ca.gov/downloads"
+    ]
+  },
+  {
+    "state": "CA",
+    "state_name": "California",
+    "license_type": "RN",
+    "app_type": "Initial",
+    "board_url": "https://www.rn.ca.gov",
+    "search_results": [
+      {
+        "title": "Forms",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.rn.ca.gov%2Fforms%2Fforms.shtml&rut=fe99de740a7f715d0b29ae4c1f2bf133787819363851cf9644a8704944e5eec3"
+      },
+      {
+        "title": "Application For Licensure By Examination Rn California Form - Fill and ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.uslegalforms.com%2Fform%2Dlibrary%2F260439%2Dapplication%2Dfor%2Dlicensure%2Dby%2Dexamination%2Drn%2Dcalifornia%2Dform&rut=fb66b0f79f91bda01a0f8b57e5a62331522c37ab56c03a9718646b226e5e0bac"
+      },
+      {
+        "title": "California RN Online Examination Application Form",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.printfriendly.com%2Fdocument%2Fcalifornia%2Drn%2Donline%2Dexamination%2Dapplication%2Dform&rut=facd6e5120f4582c239dbb433b531f37e4284feda3c678c738f636a21924164c"
+      },
+      {
+        "title": "Online RN Initial Exam Application Instructions",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.formalu.com%2Fforms%2F140168%2Fonline%2Drn%2Dinitial%2Dexam%2Dapplication%2Dinstructions&rut=517646261983bd851bb0e54e5791df672165d663a7b538423024479c6fc8f384"
+      },
+      {
+        "title": "CA Application for Licensure by Examination Form - pdfFiller",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.pdffiller.com%2F37103237%2Dfillable%2Dfillable%2Dapplication%2Dfor%2Dlicensure%2Dby%2Dexamination%2Drn%2Dcalifornia%2Dform&rut=e1106fe8f4330b5b134866f357708f04d6b138d5889757dee94b6660d907bdeb"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.rn.ca.gov/applications",
+      "https://www.rn.ca.gov/forms",
+      "https://www.rn.ca.gov/licensing",
+      "https://www.rn.ca.gov/apply",
+      "https://www.rn.ca.gov/downloads"
+    ]
+  },
+  {
+    "state": "CA",
+    "state_name": "California",
+    "license_type": "RN",
+    "app_type": "Renewal",
+    "board_url": "https://www.rn.ca.gov",
+    "search_results": [
+      {
+        "title": "Forms",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.rn.ca.gov%2Fforms%2Fforms.shtml&rut=fe99de740a7f715d0b29ae4c1f2bf133787819363851cf9644a8704944e5eec3"
+      },
+      {
+        "title": "PDFCertified Nurse Assistant and or Home Health Aide Renewal Application",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fcoadn.org%2Fpublic%2Fuploads%2Fimages%2FCNA_Renewal_Application_cdph283c.pdf&rut=0f09cc9c178b04846baaebfc76b8a5957f32b899b98d4616890424e4df7ab278"
+      },
+      {
+        "title": "California CNA and HHA Renewal Application Form",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.printfriendly.com%2Fdocument%2Fcalifornia%2Dcna%2Dhha%2Drenewal%2Dapplication%2Dform&rut=2c854780f3d0a2a3447b13e5caee97e7444a37fb4a412cb887ee00fabc9c4cff"
+      },
+      {
+        "title": "Forms and Publications - California Board of Registered Nursing",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Frn.ca.gov%2Fforms%2Findex.shtml&rut=31aa50b8fc2a843e1326f96ccff269c1fa9790a94f1cbc7c53fced84a6d59273"
+      },
+      {
+        "title": "PDFCertified Nurse Assistant And/Or Home Health Aide Renewal Application",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fca%2Dhwi.org%2Fpublic%2Fuploads%2Fpdfs%2Frenewal_application_.pdf&rut=28a2358463f9a71c464f41d7963e792c9b2ce351422953267ad74ce251d90709"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.rn.ca.gov/applications",
+      "https://www.rn.ca.gov/forms",
+      "https://www.rn.ca.gov/licensing",
+      "https://www.rn.ca.gov/apply",
+      "https://www.rn.ca.gov/downloads"
+    ]
+  },
+  {
+    "state": "CO",
+    "state_name": "Colorado",
+    "license_type": "NP",
+    "app_type": "Renewal",
+    "board_url": "https://dora.colorado.gov/professions/nursing",
+    "search_results": [
+      {
+        "title": "Colorado Nursing Applications and Forms",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fdpo.colorado.gov%2FNursing%2FApplications&rut=06661aa88f797e633ee758bd5a26974911f5aeabec93aa5bfb0e76665869277c"
+      },
+      {
+        "title": "PDFColorado Healthcare Professional Credentials Application (CHCPCA)-Word ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fecreds.nmhsc.com%2FeCredsCustomers%2FApplication%2520Forms%2520%2D%2520Non%2520HSC%2FColorado%2520State%2520Mandated%2520Application.pdf&rut=1ee189708b515027f6e5c7e7854395a95afee479b401fe64d14dcfd6fe571e46"
+      },
+      {
+        "title": "Colorado Nursing License Renewal Guide - betternurse.org",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fbetternurse.org%2Fcolorado%2Dnursing%2Dlicense%2Drenewal%2F&rut=2df32ba2c29a0f8c57869e3c4f4562defc321ae546fc4ca16bad2c1ceb48664c"
+      },
+      {
+        "title": "CHCP_Credential_App",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fecredspractitioner.nmhsc.com%2FDocumentModels%2FDetails%2F25&rut=2aaa135b0d20b0c1138743faac232c8f6c5d9516df1eae9ae2e735d64555419d"
+      },
+      {
+        "title": "Colorado Medical Applications and Forms",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fdpo.colorado.gov%2FMedical%2FApplications&rut=2d21c8d152feee30251de6b0733c3bfa520b1e89da742df042638077ce2c8018"
+      }
+    ],
+    "suggested_urls": [
+      "https://dora.colorado.gov/professions/nursing/applications",
+      "https://dora.colorado.gov/professions/nursing/forms",
+      "https://dora.colorado.gov/professions/nursing/licensing",
+      "https://dora.colorado.gov/professions/nursing/apply",
+      "https://dora.colorado.gov/professions/nursing/downloads"
+    ]
+  },
+  {
+    "state": "HI",
+    "state_name": "Hawaii",
+    "license_type": "RN",
+    "app_type": "Initial",
+    "board_url": "https://cca.hawaii.gov/pvl/boards/nursing",
+    "search_results": [
+      {
+        "title": "Professional & Vocational Licensing Division | Application Forms ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fcca.hawaii.gov%2Fpvl%2Fboards%2Fnursing%2Fapplication_publications%2F&rut=344a3fccac242d0852f4116aa3386f43d1d2df35d4d19c7974778051319ca033"
+      },
+      {
+        "title": "File Application Form, Supporting Documents and Pay Fees Online",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fcca.hawaii.gov%2Fpvl%2Ffile%2Dapplication%2Dform%2Dsupporting%2Ddocuments%2Dand%2Dpay%2Dfees%2Donline%2F&rut=ad9cf96cfc10527c1facdff542a0f788b4db92308b85cdc403b0452af106bffd"
+      },
+      {
+        "title": "Hawaii Board Of Nursing Application Pdf - Fill and Sign Printable ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.uslegalforms.com%2Fform%2Dlibrary%2F475901%2Dhawaii%2Dboard%2Dof%2Dnursing%2Dapplication%2Dpdf&rut=6618527ef64e9429d64583d8311190affda14308c42e74b9f8a973b223293245"
+      },
+      {
+        "title": "Fillable Online Hawaii licensure application form - pdfFiller",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.pdffiller.com%2F741672511%2D%2DHawaii%2Dlicensure%2Dapplication%2Dform%2DNurse%2DRegistration%2D&rut=3430aeee500f1f8e91b75b3671c1e41dba6e95c8bb51768540e9c11a8c8fc841"
+      },
+      {
+        "title": "Hawaii nursing license by endorsement online application: Fill out ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.dochub.com%2Ffillable%2Dform%2F23272%2Dhawaii%2Dboard%2Dof%2Dnursing%2Dapplication&rut=098b4a49ecc8abacf202bfcfb11cc56bb30652acdd2a126f3e23296965ae3831"
+      }
+    ],
+    "suggested_urls": [
+      "https://cca.hawaii.gov/pvl/boards/nursing/applications",
+      "https://cca.hawaii.gov/pvl/boards/nursing/forms",
+      "https://cca.hawaii.gov/pvl/boards/nursing/licensing",
+      "https://cca.hawaii.gov/pvl/boards/nursing/apply",
+      "https://cca.hawaii.gov/pvl/boards/nursing/downloads"
+    ]
+  },
+  {
+    "state": "HI",
+    "state_name": "Hawaii",
+    "license_type": "RN",
+    "app_type": "Renewal",
+    "board_url": "https://cca.hawaii.gov/pvl/boards/nursing",
+    "search_results": [
+      {
+        "title": "Professional & Vocational Licensing Division | Application Forms ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fcca.hawaii.gov%2Fpvl%2Fboards%2Fnursing%2Fapplication_publications%2F&rut=344a3fccac242d0852f4116aa3386f43d1d2df35d4d19c7974778051319ca033"
+      },
+      {
+        "title": "File Application Form, Supporting Documents and Pay Fees Online",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fcca.hawaii.gov%2Fpvl%2Ffile%2Dapplication%2Dform%2Dsupporting%2Ddocuments%2Dand%2Dpay%2Dfees%2Donline%2F&rut=ad9cf96cfc10527c1facdff542a0f788b4db92308b85cdc403b0452af106bffd"
+      },
+      {
+        "title": "Hawaii RN License Renewal (2025 Requirements, CE, & How to Renew)",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Frenewrequirements.com%2Frn%2Dlicense%2Drenewal%2Dhawaii%2F&rut=fba1cf6750be24aeaf0f3a7a37c4ee68cc98cbe0eedf9b4bd2fe0b2174603f45"
+      },
+      {
+        "title": "PDF2025 NURSING LICENSE RENEWAL REQUIREMENTS AND FAQS - cca.hawaii.gov",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fcca.hawaii.gov%2Fpvl%2Ffiles%2F2025%2F03%2F2025%2DNURSING%2DRENEWAL%2DREQUIREMENTS%2DAND%2DFAQS%2Dfinal.pdf&rut=1ff0485c693f55496b671019806783475df1c1a28e75499d64bc2c32e66096ad"
+      },
+      {
+        "title": "PDFImportant - Please Read Carefully Before Submitting Your Application ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fcca.hawaii.gov%2Fpvl%2Ffiles%2F2024%2F03%2FAdvanced%2DPractice%2DRegistered%2DNurses_03.24R.pdf&rut=97126d37f6457e130b1b9dfdf0daf1621918a403b9ff6584e1136b239280cf2b"
+      }
+    ],
+    "suggested_urls": [
+      "https://cca.hawaii.gov/pvl/boards/nursing/applications",
+      "https://cca.hawaii.gov/pvl/boards/nursing/forms",
+      "https://cca.hawaii.gov/pvl/boards/nursing/licensing",
+      "https://cca.hawaii.gov/pvl/boards/nursing/apply",
+      "https://cca.hawaii.gov/pvl/boards/nursing/downloads"
+    ]
+  },
+  {
+    "state": "IL",
+    "state_name": "Illinois",
+    "license_type": "CSR",
+    "app_type": "None",
+    "board_url": "https://www.idfpr.com/profs/pharmacy.asp",
+    "search_results": [
+      {
+        "title": "PDFcsr-r.indd - Department of Financial & Professional Regulation",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fidfpr.illinois.gov%2Fcontent%2Fdam%2Fsoi%2Fen%2Fweb%2Fidfpr%2Frenewals%2Fapply%2Fforms%2Fcsr%2Dr.pdf&rut=c26b27b2a61ba70623bc87796a185b5806c20a5bd7415da37252283c47445052"
+      },
+      {
+        "title": "Publications and Forms List - Illinois Secretary of State",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.ilsos.gov%2Fpublications%2Fallpubs.html&rut=811da5145eef3e48b41f0d891d73cd30d735e2f83264cc490ed1a7e1a8d31e5e"
+      },
+      {
+        "title": "Publications and Forms Instructions - Illinois Secretary of State",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.ilsos.gov%2Fpublications%2Fpdffillinstruct.html&rut=837d944dbe8e5335336b9df259125173e01ce380e07ad901aed7d07af538f0c0"
+      },
+      {
+        "title": "IDHS: Forms - Illinois Department of Human Services",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.dhs.state.il.us%2Fpage.aspx%3Fitem%3D31097&rut=3e2763a39acbda9b33d3a6f4450feffe0c8205f19da2a4d33d8ca4da28761e32"
+      },
+      {
+        "title": "PDFf2537.indd - Department of Financial & Professional Regulation",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fidfpr.illinois.gov%2Fcontent%2Fdam%2Fsoi%2Fen%2Fweb%2Fidfpr%2Frenewals%2Fapply%2Fforms%2Fcs%2Dinstructions.pdf&rut=16cd6eac409dc7f5dedcc74e8df976e159a65b24cbb43c2962d29556ad6b7941"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.idfpr.com/profs/pharmacy.asp/applications",
+      "https://www.idfpr.com/profs/pharmacy.asp/forms",
+      "https://www.idfpr.com/profs/pharmacy.asp/licensing",
+      "https://www.idfpr.com/profs/pharmacy.asp/apply",
+      "https://www.idfpr.com/profs/pharmacy.asp/downloads"
+    ]
+  },
+  {
+    "state": "IL",
+    "state_name": "Illinois",
+    "license_type": "NP",
+    "app_type": "Initial",
+    "board_url": "https://www.idfpr.com/profs/nursing.asp",
+    "search_results": [
+      {
+        "title": "PDFnurse grads.indd - Department of Financial & Professional Regulation",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fidfpr.illinois.gov%2Fcontent%2Fdam%2Fsoi%2Fen%2Fweb%2Fidfpr%2Frenewals%2Fapply%2Fforms%2FNurse%2520Grads.pdf&rut=4353c159aeeec71e7b1065903871df4378d6c291b6166390c7e41891f852d9be"
+      },
+      {
+        "title": "Form 445103 - Fill Out, Sign Online and Download Fillable PDF, Illinois",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.templateroller.com%2Ftemplate%2F2577020%2Fform%2D445103%2Dhome%2Dhealth%2Dhome%2Dservices%2Dhome%2Dnursing%2Dagency%2Dinitial%2Dlicensure%2Dapplication%2Dillinois.html&rut=38b6e196117eff55ba11d620619dc67cf28df1f9bf4205ca0b4dd6aa48b57a58"
+      },
+      {
+        "title": "PDFMicrosoft Word - BLANK APP-2004 - Apogee Health Partners",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.apogeehealthpartners.com%2Fwp%2Dcontent%2Fuploads%2F2020%2F04%2FState%2Dof%2DIllinois%2DInitial%2DCredentialing%2DApplication.pdf&rut=bcbc372c86837e380ef3645cbf9f4e16dd387840ad34c39a5ff630feff977f22"
+      },
+      {
+        "title": "eLicense Online",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fonline%2Ddfpr.micropact.com%2F&rut=4deede2ffd2059170b598c65ced54cd41efff92f7d9dfbc4e338f8d933b1635d"
+      },
+      {
+        "title": "State Nurse Practitioner Licensure Forms - Office of Certification ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Facademicguides.waldenu.edu%2Ffieldexperience%2Fson%2Foclc%2FstateNPlicensureforms&rut=9ccd9d8f275cda231e22c25fc795c35d0d535809011722671f020c1ccf06aeb6"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.idfpr.com/profs/nursing.asp/applications",
+      "https://www.idfpr.com/profs/nursing.asp/forms",
+      "https://www.idfpr.com/profs/nursing.asp/licensing",
+      "https://www.idfpr.com/profs/nursing.asp/apply",
+      "https://www.idfpr.com/profs/nursing.asp/downloads"
+    ]
+  },
+  {
+    "state": "IL",
+    "state_name": "Illinois",
+    "license_type": "RN",
+    "app_type": "Initial",
+    "board_url": "https://www.idfpr.com/profs/nursing.asp",
+    "search_results": [
+      {
+        "title": "PDFrn-en - Department of Financial & Professional Regulation",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fidfpr.illinois.gov%2Fcontent%2Fdam%2Fsoi%2Fen%2Fweb%2Fidfpr%2Frenewals%2Fapply%2Fforms%2FRN%2DEN.pdf&rut=36ba285fdcf515487dacb2ca9e579c633424cfd7e0f0bfe1f094e724609c592e"
+      },
+      {
+        "title": "IL DPH 445103 Form - Fill Online, Printable, Fillable, Blank - pdfFiller",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2F445103.pdffiller.com%2F&rut=d9e107d2339df3a1cca0c3fd67db74b6fc115a490cb395ca171bb7e1e7eeab32"
+      },
+      {
+        "title": "IDHS: Forms - Illinois Department of Human Services",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.dhs.state.il.us%2Fpage.aspx%3Fitem%3D61585&rut=c9d51c7c44d960c34835a7fb4555fe923cfdfd2290bdf3e86a475aec384a666f"
+      },
+      {
+        "title": "Form 445103 - Fill Out, Sign Online and Download Fillable PDF, Illinois",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.templateroller.com%2Ftemplate%2F2577020%2Fform%2D445103%2Dhome%2Dhealth%2Dhome%2Dservices%2Dhome%2Dnursing%2Dagency%2Dinitial%2Dlicensure%2Dapplication%2Dillinois.html&rut=38b6e196117eff55ba11d620619dc67cf28df1f9bf4205ca0b4dd6aa48b57a58"
+      },
+      {
+        "title": "Illinois RN License Application Instructions: Exam, Endorsement ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fstudylib.net%2Fdoc%2F18734040%2Finstruction%2Dsheet%2D%2D%2Dillinois%2Ddepartment%2Dof%2Dfinancial%2Dand%2D...&rut=6218587cdec2a1aae4d521486320ff2845ab2ac2c3ca38a805d8bbfd0274752e"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.idfpr.com/profs/nursing.asp/applications",
+      "https://www.idfpr.com/profs/nursing.asp/forms",
+      "https://www.idfpr.com/profs/nursing.asp/licensing",
+      "https://www.idfpr.com/profs/nursing.asp/apply",
+      "https://www.idfpr.com/profs/nursing.asp/downloads"
+    ]
+  },
+  {
+    "state": "IN",
+    "state_name": "Indiana",
+    "license_type": "CSR",
+    "app_type": "Initial",
+    "board_url": "https://www.in.gov/pla/pharmacy",
+    "search_results": [
+      {
+        "title": "PLA: Controlled Substances Registration Home - IN.gov",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.in.gov%2Fpla%2Fprofessions%2Fcontrolled%2Dsubstance%2Dregistration%2F&rut=8af6abed533b5ed4d48abb44fdedc1d27e2c0ff66c238554457e6d934ec1a11d"
+      },
+      {
+        "title": "Indiana Csr Application 2023-2025 Form - Fill Out and Sign Printable ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.signnow.com%2Ffill%2Dand%2Dsign%2Dpdf%2Dform%2F435481%2Dpla%2Dpractitioner%2Dcontrolled%2Dsubstances%2Dregistration%2Dapplication&rut=7f2fcc356f2ccd90634537cdc9a940d3804e07adf657d3640385fc278d813083"
+      },
+      {
+        "title": "Indiana csr application: Fill out & sign online | DocHub",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.dochub.com%2Ffillable%2Dform%2F159842%2Dapplication%2Dfor%2Dindiana%2Dcontrolled%2Dsubstances%2Dregistration%2Dcsr&rut=fdf271b7b4c25733a131f2de4235181ad6b6f66d7263b9c16e51e6ece44382a2"
+      },
+      {
+        "title": "PDFApplication for Indiana Controlled Substances Registration (Csr) for ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fabortiondocs.org%2Fwp%2Dcontent%2Fuploads%2F2020%2F08%2FNucatola%2DDeborah%2DIndiana%2Dcontrolled%2Dsubstance%2DCSR%2DC%2Dlicense%2Dinitial%2Dapplication%2DRedacted.pdf&rut=c4367b2f66b694f8669a43331759dc2c1abf28fd58a616963643fe19137045fa"
+      },
+      {
+        "title": "IARA: State Forms Online Catalog",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fforms.in.gov%2FDownload.aspx%3Fid%3D6584&rut=a3c509d0be314dfe7e7307003e397eaa562b8d85605658238926921af5155349"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.in.gov/pla/pharmacy/applications",
+      "https://www.in.gov/pla/pharmacy/forms",
+      "https://www.in.gov/pla/pharmacy/licensing",
+      "https://www.in.gov/pla/pharmacy/apply",
+      "https://www.in.gov/pla/pharmacy/downloads"
+    ]
+  },
+  {
+    "state": "IN",
+    "state_name": "Indiana",
+    "license_type": "CSR",
+    "app_type": "Renewal",
+    "board_url": "https://www.in.gov/pla/pharmacy",
+    "search_results": [
+      {
+        "title": "PLA: Controlled Substances Registration Home - IN.gov",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.in.gov%2Fpla%2Fprofessions%2Fcontrolled%2Dsubstance%2Dregistration%2F&rut=8af6abed533b5ed4d48abb44fdedc1d27e2c0ff66c238554457e6d934ec1a11d"
+      },
+      {
+        "title": "PDFApplication for Indiana Controlled Substances Registration (Csr) for ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.zillionforms.com%2F2014%2FF648403606.PDF&rut=dde4e58d2766f3718b9ebc7e84ab9264d9cdc4527ff6f15ed726ae9adb91f47c"
+      },
+      {
+        "title": "PDFControlled Substance Registration Renewal Form",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fsecure.in.gov%2Fpla%2Ffiles%2FGeneric%2DCSR%2DRenewal%2DAfter%2D7.1.19.pdf&rut=3af28ad6cbcd2b0e175090c16ce7dd4faf05e8df894599e7913647277387dab4"
+      },
+      {
+        "title": "Indiana Csr Application 2023-2025 Form - Fill Out and Sign Printable ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.signnow.com%2Ffill%2Dand%2Dsign%2Dpdf%2Dform%2F435481%2Dpla%2Dpractitioner%2Dcontrolled%2Dsubstances%2Dregistration%2Dapplication&rut=7f2fcc356f2ccd90634537cdc9a940d3804e07adf657d3640385fc278d813083"
+      },
+      {
+        "title": "Indiana csr application: Fill out & sign online | DocHub",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.dochub.com%2Ffillable%2Dform%2F159842%2Dapplication%2Dfor%2Dindiana%2Dcontrolled%2Dsubstances%2Dregistration%2Dcsr&rut=fdf271b7b4c25733a131f2de4235181ad6b6f66d7263b9c16e51e6ece44382a2"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.in.gov/pla/pharmacy/applications",
+      "https://www.in.gov/pla/pharmacy/forms",
+      "https://www.in.gov/pla/pharmacy/licensing",
+      "https://www.in.gov/pla/pharmacy/apply",
+      "https://www.in.gov/pla/pharmacy/downloads"
+    ]
+  },
+  {
+    "state": "IN",
+    "state_name": "Indiana",
+    "license_type": "MD",
+    "app_type": "Renewal",
+    "board_url": "https://www.in.gov/pla/medical",
+    "search_results": [
+      {
+        "title": "PDFMD/DO Active Renewal Form - IN.gov",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.in.gov%2Fpla%2Ffiles%2FGeneric%2DMD.DO%2DActive%2DRenew%2DForm.pdf&rut=f0420bf3550d7d90daeb58ba727d28e9fac79990b3d49edbd0ead6011397d36e"
+      },
+      {
+        "title": "PDFIndiana Professional Licensing Agency - Medical Licensing Board 402 ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.fsmb.org%2Fsiteassets%2Fua%2Fstates%2F015%2Finstructions.pdf&rut=a7e8ac41b5e218b9fb6f442187f22774c391e4b7d8b2f960b46c5f7c62e0c209"
+      },
+      {
+        "title": "PLA: Physicians Licensing Information",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.in.gov%2Fpla%2Fprofessions%2Fphysicians%2Dhome%2Fphysicians%2Dlicensing%2Dinformation%2F&rut=e2c674842a352b8d7291dc66e32d73a18e6b5e4d89994c382be0e8bae99bc8b6"
+      },
+      {
+        "title": "How Do You Renew An Indiana Medical License? - Robert Chelle",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Frobertchelle.com%2Fresources%2Fhow%2Ddo%2Dyou%2Drenew%2Dan%2Dindiana%2Dmedical%2Dlicense%2F&rut=22545bc8f181048e8e04c3b5c0a15a0d94df308e4679621fced6b0306db4b674"
+      },
+      {
+        "title": "Fillable Online in MD DO Expired Renewal Form - pdfFiller",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.pdffiller.com%2F46702169%2D%2DzzzGeneric_MD_DO_Expired_Renew_Form1pdf%2DMD%2DDO%2DExpired%2DRenewal%2DForm%2DINgov%2Din%2D&rut=80d087bf8822a0d47804775c4ba59e25f75a2b4609754ef717ce855e1491dacc"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.in.gov/pla/medical/applications",
+      "https://www.in.gov/pla/medical/forms",
+      "https://www.in.gov/pla/medical/licensing",
+      "https://www.in.gov/pla/medical/apply",
+      "https://www.in.gov/pla/medical/downloads"
+    ]
+  },
+  {
+    "state": "MD",
+    "state_name": "Maryland",
+    "license_type": "MD",
+    "app_type": "None",
+    "board_url": "https://www.mbp.state.md.us",
+    "search_results": [
+      {
+        "title": "PDFNON-RESIDENT MARRIAGE LICENSE APPLICATION - Montgomery County Maryland",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.montgomerycountymd.gov%2Fcct%2Fresources%2Ffiles%2FMarriage_Application_Non%2DResident.pdf&rut=dbe04ed568c456a0ab6b1ed21c70816e61dcb96db3301fb05ae65ac677b5d16c"
+      },
+      {
+        "title": "MD Non-Resident Marriage Application Form - Fill Online, Printable ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fstate%2Dof%2Dmaryland%2Dmarriage%2Dlicense%2Dapplication.pdffiller.com%2F&rut=e422d1c814e4388da015f51076ce025eec95f1383382fe1e65f667ce02e8bcbc"
+      },
+      {
+        "title": "PDFState of Maryland Non-resident Marriage License Application - Affidavit",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.courts.state.md.us%2Fsites%2Fdefault%2Ffiles%2Fcourt%2Dforms%2Fccfm066.pdf&rut=80f9a3ee457ca809392f0c013efc4ba63a41efbed25b89788abc949ee4894ebf"
+      },
+      {
+        "title": "MVA Forms - Pages - Motor Vehicle Administration",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fmva.maryland.gov%2FPages%2Fform%2Findex.aspx&rut=07aa7b7196ced2020541799dcbb71aebabddd24646227608673aa30d614b8cbc"
+      },
+      {
+        "title": "Forms and Self-Help Videos - Montgomery County, MD Circuit Court",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.montgomerycountymd.gov%2Fcct%2Fforms.html&rut=b65a1a7b8fd70a48caa6455754f7cf28d2ba77717db98a596b91578c29be9631"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.mbp.state.md.us/applications",
+      "https://www.mbp.state.md.us/forms",
+      "https://www.mbp.state.md.us/licensing",
+      "https://www.mbp.state.md.us/apply",
+      "https://www.mbp.state.md.us/downloads"
+    ]
+  },
+  {
+    "state": "MD",
+    "state_name": "Maryland",
+    "license_type": "NP",
+    "app_type": "None",
+    "board_url": "https://mbon.maryland.gov",
+    "search_results": [
+      {
+        "title": "PDFBoard of Nursing - Maryland Department of Health",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fhealth.maryland.gov%2Fmbon%2FDocuments%2Finitial%2Dadvanced%2Dpractice%2Dapplication.pdf&rut=a52d075310e2c9c8194a32b239a4cf977be7a723c78d2060f7ceda243393f8b8"
+      },
+      {
+        "title": "Fillable Online MARYLAND APPLICATION FOR LICENSURE NON - pdfFiller",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.pdffiller.com%2F489381063%2D%2DMARYLAND%2DAPPLICATION%2DFOR%2DLICENSURE%2DNON%2DPRACTICE%2DORIENTED%2D&rut=cc0f4d5f9997809cd33ff4ddb86108733a2208abcb1b2e2c0ab811ab87224696"
+      },
+      {
+        "title": "Pages - Home - Maryland Department of Health",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fhealth.maryland.gov%2Fmbon%2FPages%2Fdefault.aspx&rut=e9c910f1ac438361b4d4e116cf0fd9accb11b243de6b33ad46dcb4670e656dd2"
+      },
+      {
+        "title": "Maryland Department of Health New Nurse Practitioner Page",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fhealth.maryland.gov%2Fmbon%2FPages%2FNew%2DNurse%2DPractitioner.aspx&rut=fba16affa345e97c59b5a8ad1b071972b964f5834aa6066e39ea923d451e80c2"
+      },
+      {
+        "title": "Maryland Nurse Practitioner Licensure Steps - 2026",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.nursepractitionerlicense.com%2Fnurse%2Dpractitioner%2Dlicensing%2Dguides%2Fmaryland%2Dnurse%2Dpractitioner%2Dlicensure%2Dsteps%2F&rut=eb3d36ac17488fc9f76d2eca7c7e293a835d758847ff0cede73b80b30c588195"
+      }
+    ],
+    "suggested_urls": [
+      "https://mbon.maryland.gov/applications",
+      "https://mbon.maryland.gov/forms",
+      "https://mbon.maryland.gov/licensing",
+      "https://mbon.maryland.gov/apply",
+      "https://mbon.maryland.gov/downloads"
+    ]
+  },
+  {
+    "state": "ME",
+    "state_name": "Maine",
+    "license_type": "NP",
+    "app_type": "Initial",
+    "board_url": "https://www.maine.gov/boardofnursing",
+    "search_results": [
+      {
+        "title": "Advanced Practice Registered Nurse - Maine",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.maine.gov%2Fboardofnursing%2Flicensing%2Fadvanced%2Dpractice%2Drn%2Findex.html&rut=8f51a44aed5afdaf6c04902404a86a4c026541b0adecb3fce41872ccbca5ed9f"
+      },
+      {
+        "title": "Maine RN License Guide for Nurse Practitioners",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fopportunityhealthcare.com%2Fnurse%2Dpractitioner%2Dscope%2Dof%2Dpractice%2Dauthority%2Dby%2Dstate%2Frn%2Dlicensing%2Dme&rut=7421a9af61dae292f116eea534e30576489fbbac95c8f080716c6af1448ab157"
+      },
+      {
+        "title": "State Nurse Practitioner Licensure Forms - Office of Certification ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Facademicguides.waldenu.edu%2Ffieldexperience%2Fson%2Foclc%2FstateNPlicensureforms&rut=9ccd9d8f275cda231e22c25fc795c35d0d535809011722671f020c1ccf06aeb6"
+      },
+      {
+        "title": "Fillable Online Maine Registered Professional Nurse License Application ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.pdffiller.com%2F6644370%2D%2DRN2520Endorsement2520Applicationpdf%2DThe%2DRN%2Dapplication%2DMainegov%2Dmaine%2D&rut=e9648de2c04237b3d526d9a050841d78f70c7d354a01b5a61d3e46c27f829e27"
+      },
+      {
+        "title": "Licensing: Maine State Board of Nursing",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.maine.gov%2Fboardofnursing%2Flicensing%2Findex.html&rut=4a1325f0d23e0338172ba6134ab11b121b9403bcfcd8e3684d1f6d4a4744e243"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.maine.gov/boardofnursing/applications",
+      "https://www.maine.gov/boardofnursing/forms",
+      "https://www.maine.gov/boardofnursing/licensing",
+      "https://www.maine.gov/boardofnursing/apply",
+      "https://www.maine.gov/boardofnursing/downloads"
+    ]
+  },
+  {
+    "state": "MI",
+    "state_name": "Michigan",
+    "license_type": "NP",
+    "app_type": "Initial",
+    "board_url": "https://www.michigan.gov/lara/bureau-list/bpl/health/hp-lic-health-prof/nursing",
+    "search_results": [
+      {
+        "title": "PDFNURSING LICENSING GUIDE - State of Michigan",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.michigan.gov%2F%2D%2Fmedia%2FProject%2FWebsites%2Flara%2FFolder15%2FNursing.pdf%3Frev%3Dd5e51e80b59a440b978571a478a49464&rut=294ee44b88eeb5a68ea16ef61f6238c020b75c57897325fda2d65e9bb1e222d0"
+      },
+      {
+        "title": "Michigan Nurse Practitioner Licensure Steps - 2026",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.nursepractitionerlicense.com%2Fnurse%2Dpractitioner%2Dlicensing%2Dguides%2Fmichigan%2Dnurse%2Dpractitioner%2Dlicensure%2Dsteps%2F&rut=541ea6b661970b5b5aca60acf590297f674c63142ad67b6f1bc434ea1308dc27"
+      },
+      {
+        "title": "State Nurse Practitioner Licensure Forms - Office of Certification ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Facademicguides.waldenu.edu%2Ffieldexperience%2Fson%2Foclc%2FstateNPlicensureforms&rut=9ccd9d8f275cda231e22c25fc795c35d0d535809011722671f020c1ccf06aeb6"
+      },
+      {
+        "title": "Nursing - State of Michigan",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.michigan.gov%2Flara%2Fbureau%2Dlist%2Fbpl%2Fhealth%2Fhp%2Dlic%2Dhealth%2Dprof%2Fnursing&rut=1467a05beee6eec3f50ca93708e17766968449e30d7ba7c1ebcd0b17ce70733b"
+      },
+      {
+        "title": "PDFFrequently Asked Questions for Michigan NPs 1. Licensure/Certification ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fcdn.ymaws.com%2Fmicnp.org%2Fresource%2Fresmgr%2Fresources_%26_links%2Fmicnp_licensure_certificatio.pdf&rut=365f7f38ed38c2b578fcb7d5e03ac8eef024b066c98a032063ef69430ddead5a"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.michigan.gov/lara/bureau-list/bpl/health/hp-lic-health-prof/nursing/applications",
+      "https://www.michigan.gov/lara/bureau-list/bpl/health/hp-lic-health-prof/nursing/forms",
+      "https://www.michigan.gov/lara/bureau-list/bpl/health/hp-lic-health-prof/nursing/licensing",
+      "https://www.michigan.gov/lara/bureau-list/bpl/health/hp-lic-health-prof/nursing/apply",
+      "https://www.michigan.gov/lara/bureau-list/bpl/health/hp-lic-health-prof/nursing/downloads"
+    ]
+  },
+  {
+    "state": "MI",
+    "state_name": "Michigan",
+    "license_type": "RN",
+    "app_type": "Initial",
+    "board_url": "https://www.michigan.gov/lara/bureau-list/bpl/health/hp-lic-health-prof/nursing",
+    "search_results": [
+      {
+        "title": "PDFNURSING LICENSING GUIDE - State of Michigan",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.michigan.gov%2F%2D%2Fmedia%2FProject%2FWebsites%2Flara%2FFolder15%2FNursing.pdf%3Frev%3Dd5e51e80b59a440b978571a478a49464&rut=294ee44b88eeb5a68ea16ef61f6238c020b75c57897325fda2d65e9bb1e222d0"
+      },
+      {
+        "title": "Nursing License Michigan - Fill and Sign Printable Template Online",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.uslegalforms.com%2Fform%2Dlibrary%2F393640%2Dnursing%2Dlicense%2Dmichigan&rut=24ce60b2364fe919e7b4d63ef5f9fb91464fde3aab99dae537a731c059022db9"
+      },
+      {
+        "title": "Fillable Online Michigan Rn License Application. Michigan Rn License ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.pdffiller.com%2F534378459%2D%2DMichigan%2DRn%2DLicense%2DApplication%2DMichigan%2DRn%2DLicense%2DApplication%2D&rut=31c5f8896fdd11e52d34dcd30c4781e51b3b34a5dcf6c54fc5ee8def778ed93f"
+      },
+      {
+        "title": "Registered Nurse (RN) License Application Process in Michigan",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.uscisguide.com%2Fstate%2Dregulations%2Dand%2Dlaws%2Fregistered%2Dnurse%2Drn%2Dlicense%2Dapplication%2Dprocess%2Din%2Dmichigan%2F&rut=c6a3b7d6c2bc33e35d892a55b1aea7ac3a0bdfedd0a5aa9aca7c880fbbed33cf"
+      },
+      {
+        "title": "Michigan Nursing License & Board of Nursing Guide - Trusted Health",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.trustedhealth.com%2Fnurse%2Dlicensure%2Dguide%2Fmichigan&rut=567bfbb9bed97f7cbeebbc6372524c12ca219441836609a624ad590717730b56"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.michigan.gov/lara/bureau-list/bpl/health/hp-lic-health-prof/nursing/applications",
+      "https://www.michigan.gov/lara/bureau-list/bpl/health/hp-lic-health-prof/nursing/forms",
+      "https://www.michigan.gov/lara/bureau-list/bpl/health/hp-lic-health-prof/nursing/licensing",
+      "https://www.michigan.gov/lara/bureau-list/bpl/health/hp-lic-health-prof/nursing/apply",
+      "https://www.michigan.gov/lara/bureau-list/bpl/health/hp-lic-health-prof/nursing/downloads"
+    ]
+  },
+  {
+    "state": "MN",
+    "state_name": "Minnesota",
+    "license_type": "NP",
+    "app_type": "Initial",
+    "board_url": "https://mn.gov/boards/nursing",
+    "search_results": [
+      {
+        "title": "PDFMinnesota Uniform Credentialing Application Initial",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.mnamss.org%2Fwp%2Fwp%2Dcontent%2Fuploads%2F2025%2F07%2FMN%2DUniform%2DCredentialing%2DApplication%2DInitial%2D06.20251.pdf&rut=7408c9465d7a252e1baa2ac8b6b2ac5a7d0a9b85a3d6951e8b1ff4c2b7269f92"
+      },
+      {
+        "title": "Nurse Practitioner Enrollment Criteria and Forms",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.dhs.state.mn.us%2Fmain%2Fidcplg%3FIdcService%3DGET_DYNAMIC_CONVERSION%26RevisionSelectionMethod%3DLatestReleased%26dDocName%3DENROLL%2D65&rut=36030ea4ec11d5dc0af5161eb9773007f48a81d82c8801b7bab02affef174100"
+      },
+      {
+        "title": "Apply for a License / Minnesota Board of Nursing",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fmn.gov%2Fboards%2Fnursing%2Flicensure%2Fapply%2Dfor%2Da%2Dlicense%2F&rut=0ed5ec93401dcd7bcf5425c35e81915e76332294a92f6f44cde0f5615bc027a3"
+      },
+      {
+        "title": "MN-Uniform-Initial-Application-Revised-05-2021.pdf | Blue Cross MN",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.bluecrossmn.com%2Fmedia%2F109241&rut=6b3ab41759a6631c7a32a131ddb6a0c1fab90c9fb45eaab237445a8704ac88ea"
+      },
+      {
+        "title": "PDFInitial MN Uniform Credentialing Application Revised 11-2024",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.primewest.org%2Fdelegate%2Fresource%2Fdocument%2F2bfde24a%2Dcc12%2D4b7f%2Db448%2D80b986234edb%2FPW_2011_088.pdf&rut=ca1a199e9370e5d23b81ca50371bed6872250e2ff8d1d67cc08a3a8e5349c292"
+      }
+    ],
+    "suggested_urls": [
+      "https://mn.gov/boards/nursing/applications",
+      "https://mn.gov/boards/nursing/forms",
+      "https://mn.gov/boards/nursing/licensing",
+      "https://mn.gov/boards/nursing/apply",
+      "https://mn.gov/boards/nursing/downloads"
+    ]
+  },
+  {
+    "state": "ND",
+    "state_name": "Dakota",
+    "license_type": "NP",
+    "app_type": "Initial",
+    "board_url": "https://www.ndbon.org",
+    "search_results": [
+      {
+        "title": "PDFPractitioner Credentialing Application - BCBSND",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.bcbsnd.com%2Fcontent%2Fdam%2Fbcbsnd%2Fdocuments%2Fforms%2Fproviders%2Fcredentialing%2Dapplications%2FPractitioner_Credentialing_Application.pdf&rut=d924811949b9bf93b5833abd7a0fa5de0338ac474975997d647722abd884adec"
+      },
+      {
+        "title": "APRN Initial Licensure - ND Board of Nursing - ndbon.org",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.ndbon.org%2Flicensing%2Faprn%2Faprn%2Dlicense%2F&rut=dc32425f04359b088e218f5a081c7625bfafbc14c6944d2aaf85e32220a88f13"
+      },
+      {
+        "title": "Instructions for Downloading Forms - Health and Human Services North Dakota",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.hhs.nd.gov%2Finstructions%2Ddownloading%2Dforms&rut=d25f6cbf323f453347f0aa2654e781de0e2171e70852ed90bb9645f93242cefb"
+      },
+      {
+        "title": "PDFNorth Dakota Initial Credentialing Application Form",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fcontent%2Dservices.deltadentalmn.org%2Flibrary%2FND%2DUniform%2DInitial%2DCredentialing%2DApplication.pdf&rut=4a2bff99879ed0cf60fdee8f2a18f68bd3478b31567d75d603b81f88e4b02d8c"
+      },
+      {
+        "title": "Fillable Online North Dakota Initial Credentialing Application Form Fax ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.pdffiller.com%2F572231237%2D%2DNorth%2DDakota%2DInitial%2DCredentialing%2DApplication%2DForm%2D&rut=63c1cd562b2b97284e40ae7fbd54ee5d9f572af58a8504cd5fa5a525e2333c6a"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.ndbon.org/applications",
+      "https://www.ndbon.org/forms",
+      "https://www.ndbon.org/licensing",
+      "https://www.ndbon.org/apply",
+      "https://www.ndbon.org/downloads"
+    ]
+  },
+  {
+    "state": "NJ",
+    "state_name": "Jersey",
+    "license_type": "CDS",
+    "app_type": "Renewal",
+    "board_url": "https://www.njconsumeraffairs.gov/phar",
+    "search_results": [
+      {
+        "title": "Cds Renewal Nj - Fill and Sign Printable Template Online - US Legal Forms",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.uslegalforms.com%2Fform%2Dlibrary%2F156391%2Dcds%2Drenewal%2Dnj&rut=89fb6bca485b3febcc7dc85285bf70b3b6d2ed9d51376b6504fe9a39dbd1746a"
+      },
+      {
+        "title": "New Jersey Drug Control Unit - New Jersey Division of Consumer Affairs",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.njconsumeraffairs.gov%2Fdcu%2FPages%2FFAQregistration.aspx&rut=b76eae47102a358593ee01c22e75e84d3e4890285cecc51648afe1eeef3d13e0"
+      },
+      {
+        "title": "Cds renewal nj: Fill out & sign online | DocHub",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.dochub.com%2Ffillable%2Dform%2F284915%2Dcds%2Drenewal%2Dnj&rut=8e811e1659dba35999ad5451581a06fc903c5f4527a482f472c63fe75b2cd306"
+      },
+      {
+        "title": "2019-2025 Form NJ DDC-34 Fill Online, Printable, Fillable, Blank ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.pdffiller.com%2F619365224%2D%2Dcds%2Drenewal%2Dnj%2D&rut=4cfa437645006e0cded045a098e8a88512684197597f295fa58bd3a4ae1ff807"
+      },
+      {
+        "title": "Health Department Forms",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fhealthapps.nj.gov%2Fforms%2Findex.aspx&rut=39117a6859b63c437852a79af1e69a793a85e63a6091b4b532958b6e49808456"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.njconsumeraffairs.gov/phar/applications",
+      "https://www.njconsumeraffairs.gov/phar/forms",
+      "https://www.njconsumeraffairs.gov/phar/licensing",
+      "https://www.njconsumeraffairs.gov/phar/apply",
+      "https://www.njconsumeraffairs.gov/phar/downloads"
+    ]
+  },
+  {
+    "state": "NJ",
+    "state_name": "Jersey",
+    "license_type": "CSR",
+    "app_type": "Renewal",
+    "board_url": "https://www.njconsumeraffairs.gov/phar",
+    "search_results": [
+      {
+        "title": "Renew Your Medicaid Benefits",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.arcnj.org%2Ffile_download%2F7b61d308%2D1a8d%2D47ef%2Db0c0%2D1db0ecb7f2f5&rut=6b947d3efcb7e43ea2fbdca6c49f754a082a9b280832e1194509af918e2f9668"
+      },
+      {
+        "title": "PDFInstructions for Completing the Renewal Application for Participation ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.nj.gov%2Fhealth%2Fforms%2Fdhas%2D34.pdf&rut=0a4356e6b1ae1aa27407b1484fcf1b9fffeee8e846f744a78a8b8043a4d57171"
+      },
+      {
+        "title": "Renew Your NJ FamilyCare Coverage | Aetna Medicaid New Jersey",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.aetnabetterhealth.com%2Fnewjersey%2Fmedicaid%2Drenewal.html&rut=219c96ef122a1528db0aefd6ca0acfd6e9be3f758fccfc21016b9d3362e2097e"
+      },
+      {
+        "title": "Health Department Forms",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fhealthapps.nj.gov%2Fforms%2Findex.aspx&rut=39117a6859b63c437852a79af1e69a793a85e63a6091b4b532958b6e49808456"
+      },
+      {
+        "title": "A to Z of forms - Government of Jersey",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.gov.je%2Fforms%2FPages%2FA%2DZForms.aspx&rut=24f96577f46e3d0c27d19909b642140ee55ff0f73566aae4509bd3fdc54ce98b"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.njconsumeraffairs.gov/phar/applications",
+      "https://www.njconsumeraffairs.gov/phar/forms",
+      "https://www.njconsumeraffairs.gov/phar/licensing",
+      "https://www.njconsumeraffairs.gov/phar/apply",
+      "https://www.njconsumeraffairs.gov/phar/downloads"
+    ]
+  },
+  {
+    "state": "NM",
+    "state_name": "Mexico",
+    "license_type": "CSR",
+    "app_type": "Initial",
+    "board_url": "https://www.rld.nm.gov/boards-and-commissions/individual-boards-and-commissions/pharmacy-board",
+    "search_results": [
+      {
+        "title": "PDFSRE - Secretaría de Relaciones Exteriores",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fconsulmex.sre.gob.mx%2Fcalexico%2Fimages%2FVisaapplicationform.pdf&rut=97bb1447694a2940bdf19e2bf788881461fccac74eb0ceacdf99524ee10155ef"
+      },
+      {
+        "title": "Visa Application Form - Secretaría de Relaciones Exteriores",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.printfriendly.com%2Fdocument%2Fvisa%2Dapplication%2Dform%2Dsecretara%2Dde%2Drelaciones%2Dexteriores&rut=701b1b6b922ea669d9ef58bfce54274b1303ab37a54e7429c4be06ecc45869f1"
+      },
+      {
+        "title": "Csr Application Form - Fill Online, Printable, Fillable, Blank | pdfFiller",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.pdffiller.com%2F403649397%2D%2DCSR%2DApplication%2DForm%2Dv2%2D10th%2DJan%2D2017pdf%2Dcsr%2Dapplication%2Dform%2D&rut=fae06caf26521f507497cd16ba3488a884293a7626afc4127856fa85deb9987a"
+      },
+      {
+        "title": "Mexico Visa Application - US Legal Forms",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.uslegalforms.com%2Fform%2Dlibrary%2F68366%2Dmexico%2Dvisa%2Dapplication&rut=fe9acfabbbe4a379fd3835c550deddfb338fb468ec31a423dc673d51c0f4c55e"
+      },
+      {
+        "title": "Mexico Visa Application Form ≡ Fill Out Printable PDF - FormsPal",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fformspal.com%2Fpdf%2Dforms%2Fother%2Fmexico%2Dvisa%2Dapplication%2Dform%2F&rut=57c50ff77ff94438d0d2972810c0ca0fb1247da3a0839e0fd875167adb7d52c9"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.rld.nm.gov/boards-and-commissions/individual-boards-and-commissions/pharmacy-board/applications",
+      "https://www.rld.nm.gov/boards-and-commissions/individual-boards-and-commissions/pharmacy-board/forms",
+      "https://www.rld.nm.gov/boards-and-commissions/individual-boards-and-commissions/pharmacy-board/licensing",
+      "https://www.rld.nm.gov/boards-and-commissions/individual-boards-and-commissions/pharmacy-board/apply",
+      "https://www.rld.nm.gov/boards-and-commissions/individual-boards-and-commissions/pharmacy-board/downloads"
+    ]
+  },
+  {
+    "state": "OH",
+    "state_name": "Ohio",
+    "license_type": "NP",
+    "app_type": "Renewal",
+    "board_url": "https://www.nursing.ohio.gov",
+    "search_results": [
+      {
+        "title": "PDFApplication Instructions SAMPLE - Cloudinary",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fdam.assets.ohio.gov%2Fimage%2Fupload%2Fnursing.ohio.gov%2Fuploads%2F2021%2F06%2FRN%2DRenewal%2DApplication.pdf&rut=15c64c39a87419e2b950132391a9f6e1b5d88046e86dc1eda8a6ab948a384ff2"
+      },
+      {
+        "title": "Ohio Board of Nursing - Home | Ohio Board of Nursing",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fnursing.ohio.gov%2F&rut=d8463b7696293dd68de6b5bd5b8d51ce48d13b715cc983daa9125d50f7178d11"
+      },
+      {
+        "title": "Application Instructions - eLicense Ohio",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Felicense.ohio.gov%2FOH_ApplyForSObjectInstructions%3Fboard%3DNursing%2520Board%26licenseType%3DRegistered%2520Nurse%2520(RN)%26endorseType%3DCertified%2520Nurse%2520Practitioner%26parentId%3Da2Pt00000006p1cEAA%26applicationType%3DRenewalEndorsement%26pid%3Da1d8y0000002zwKAAQ&rut=60148c5c54206a9f80a1b9f28e2843c91f97eb0a572aad72ea0167baec37e126"
+      },
+      {
+        "title": "PDFApplication Instructions - Cloudinary",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fdam.assets.ohio.gov%2Fimage%2Fupload%2Fnursing.ohio.gov%2Fuploads%2F2020%2F06%2FApplication%2DInstructions%2DLPN%2DRenewal.pdf&rut=39fd289555f674e95a2505127746aedadfe4f46cd903e7b8483d67985ba1b924"
+      },
+      {
+        "title": "Ohio Board of Nursing Forms PDF templates. download Fill and print for ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.templateroller.com%2Ftags%2F73930%2Dohio%2Dboard%2Dof%2Dnursing%2F&rut=2f47d943ecf351c9071f241d0df94e01f9d10f2d1eefdb14d193e02861a5e390"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.nursing.ohio.gov/applications",
+      "https://www.nursing.ohio.gov/forms",
+      "https://www.nursing.ohio.gov/licensing",
+      "https://www.nursing.ohio.gov/apply",
+      "https://www.nursing.ohio.gov/downloads"
+    ]
+  },
+  {
+    "state": "OH",
+    "state_name": "Ohio",
+    "license_type": "RN",
+    "app_type": "Renewal",
+    "board_url": "https://www.nursing.ohio.gov",
+    "search_results": [
+      {
+        "title": "PDFApplication Instructions SAMPLE - Cloudinary",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fdam.assets.ohio.gov%2Fimage%2Fupload%2Fnursing.ohio.gov%2Fuploads%2F2021%2F06%2FRN%2DRenewal%2DApplication.pdf&rut=15c64c39a87419e2b950132391a9f6e1b5d88046e86dc1eda8a6ab948a384ff2"
+      },
+      {
+        "title": "Ohio Board of Nursing - Home | Ohio Board of Nursing",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fnursing.ohio.gov%2F&rut=d8463b7696293dd68de6b5bd5b8d51ce48d13b715cc983daa9125d50f7178d11"
+      },
+      {
+        "title": "Application Instructions - eLicense Ohio",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Felicense.ohio.gov%2FOH_ApplyForSObjectInstructions%3Fboard%3DNursing%2520Board%26licenseType%3DRegistered%2520Nurse%2520(RN)%26parentId%3Da0Rt0000000E2lWEAS%26applicationType%3DReinstatement%26pid%3Da1dt0000000TV37AAG&rut=3f9eb4f18dbd87d0308465eef615c55bc7d59bded58328410b1ff4ef67cfbbd6"
+      },
+      {
+        "title": "Ohio Rn License Reactivation and Reinstatement Application Form ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.templateroller.com%2Ftemplate%2F1886786%2Frn%2Dlicense%2Dreactivation%2Dand%2Dreinstatement%2Dapplication%2Dform%2Dsample%2Dohio.html&rut=284180489cec41173dfc4d16c031e7dcb4e21982580b1fe3f7c45dde432fd82f"
+      },
+      {
+        "title": "Fillable Online nursing.ohio.gov06RN-Renewal ... - pdfFiller",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.pdffiller.com%2F573591868%2D%2Dnursingohiogov06RN%2DRenewal%2DApplicationApplication%2DInstructions%2DSAMPLE%2D&rut=599d7e6ec495172d1242a38e7e037179d1b287bd5e807c8dbc8acfd81bd3ef88"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.nursing.ohio.gov/applications",
+      "https://www.nursing.ohio.gov/forms",
+      "https://www.nursing.ohio.gov/licensing",
+      "https://www.nursing.ohio.gov/apply",
+      "https://www.nursing.ohio.gov/downloads"
+    ]
+  },
+  {
+    "state": "PA",
+    "state_name": "Pennsylvania",
+    "license_type": "NP",
+    "app_type": "Initial",
+    "board_url": "https://www.dos.pa.gov/ProfessionalLicensing/BoardsCommissions/Nursing",
+    "search_results": [
+      {
+        "title": "Nursing Application Forms and Information - PA.GOV",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.pa.gov%2Fagencies%2Fdos%2Fdepartment%2Dand%2Doffices%2Fbpoa%2Fboards%2Dcommissions%2Fnursing%2Fapplication%2Dinformation&rut=1ba477d332e8266856a18d5bf8916d5bd1c0f2a1bad89e207dc9a394458ed739"
+      },
+      {
+        "title": "State Nurse Practitioner Licensure Forms - Office of Certification ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Facademicguides.waldenu.edu%2Ffieldexperience%2Fson%2Foclc%2FstateNPlicensureforms&rut=9ccd9d8f275cda231e22c25fc795c35d0d535809011722671f020c1ccf06aeb6"
+      },
+      {
+        "title": "PDFGeneral Instructions for Certified Registered Nurse Practitioner (CRNP ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fcdn.ymaws.com%2Fwww.pacnp.org%2Fresource%2Fresmgr%2F2017_Student_Symposium_Exhibitors%2FLB1_CRNP_application.pdf&rut=e537b85a7cedaa15f6c99657890656d176d1019b5169ccf324e75348e4865fe2"
+      },
+      {
+        "title": "Pennsylvania Nurse Practitioner Licensure Steps",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.nursepractitionerlicense.com%2Fnurse%2Dpractitioner%2Dlicensing%2Dguides%2Fpennsylvania%2Dnurse%2Dpractitioner%2Dlicensure%2Dsteps%2F&rut=52526eb60c48d9a8b0f6a00724bd2f58949fc815c9b3cc01890f9f9e45908941"
+      },
+      {
+        "title": "Nursing Board Resources and Documents - PA.GOV",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.pa.gov%2Fagencies%2Fdos%2Fdepartment%2Dand%2Doffices%2Fbpoa%2Fboards%2Dcommissions%2Fnursing%2Fresources%2Dand%2Ddocuments&rut=f86f95e9c8567278cbfc9378087abb87afd9fabc6bfca78356eaa67b75991172"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.dos.pa.gov/ProfessionalLicensing/BoardsCommissions/Nursing/applications",
+      "https://www.dos.pa.gov/ProfessionalLicensing/BoardsCommissions/Nursing/forms",
+      "https://www.dos.pa.gov/ProfessionalLicensing/BoardsCommissions/Nursing/licensing",
+      "https://www.dos.pa.gov/ProfessionalLicensing/BoardsCommissions/Nursing/apply",
+      "https://www.dos.pa.gov/ProfessionalLicensing/BoardsCommissions/Nursing/downloads"
+    ]
+  },
+  {
+    "state": "PA",
+    "state_name": "Pennsylvania",
+    "license_type": "NP",
+    "app_type": "Renewal",
+    "board_url": "https://www.dos.pa.gov/ProfessionalLicensing/BoardsCommissions/Nursing",
+    "search_results": [
+      {
+        "title": "Nursing Application Forms and Information - PA.GOV",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.pa.gov%2Fagencies%2Fdos%2Fdepartment%2Dand%2Doffices%2Fbpoa%2Fboards%2Dcommissions%2Fnursing%2Fapplication%2Dinformation&rut=1ba477d332e8266856a18d5bf8916d5bd1c0f2a1bad89e207dc9a394458ed739"
+      },
+      {
+        "title": "FAQs - Pennsylvania Coalition of Nurse Practitioners",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.pacnp.org%2Fpage%2Ffaqs&rut=1a38bbe2c617e792197ababbb9a617b14f26ae21a33c7267f6e8299310658ec3"
+      },
+      {
+        "title": "Board of Nursing PA License Renewal Requirements",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fnursekaffyconsulting.com%2Fboard%2Dof%2Dnursing%2Dpa%2Dlicense%2Drenewal%2Drequirements%2F&rut=8cbdf49601b5217691aa05bc248be8950298ed815fafa3aeee973ca0cd79201e"
+      },
+      {
+        "title": "Pennsylvania RN Licensing Guide on Vivian Health",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.vivian.com%2Flicensing%2Fnursing%2Fpennsylvania%2F&rut=e878c6db92b0455403fb2ea5b95993fd497fbd4f931aa458718ddabb42c344b9"
+      },
+      {
+        "title": "Nurse Practitioner Templates PDF. download Fill and print for free.",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.templateroller.com%2Ftags%2F100231%2Dnurse%2Dpractitioner%2F&rut=736dc7558a9720f24a36b6cab41dfadc15f8d594d79f6e2a887abce34cebc972"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.dos.pa.gov/ProfessionalLicensing/BoardsCommissions/Nursing/applications",
+      "https://www.dos.pa.gov/ProfessionalLicensing/BoardsCommissions/Nursing/forms",
+      "https://www.dos.pa.gov/ProfessionalLicensing/BoardsCommissions/Nursing/licensing",
+      "https://www.dos.pa.gov/ProfessionalLicensing/BoardsCommissions/Nursing/apply",
+      "https://www.dos.pa.gov/ProfessionalLicensing/BoardsCommissions/Nursing/downloads"
+    ]
+  },
+  {
+    "state": "SD",
+    "state_name": "Dakota",
+    "license_type": "NP",
+    "app_type": "Initial",
+    "board_url": "https://doh.sd.gov/boards/nursing",
+    "search_results": [
+      {
+        "title": "PDFPractitioner Credentialing Application - BCBSND",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.bcbsnd.com%2Fcontent%2Fdam%2Fbcbsnd%2Fdocuments%2Fforms%2Fproviders%2Fcredentialing%2Dapplications%2FPractitioner_Credentialing_Application.pdf&rut=d924811949b9bf93b5833abd7a0fa5de0338ac474975997d647722abd884adec"
+      },
+      {
+        "title": "APRN Initial Licensure - ND Board of Nursing - ndbon.org",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.ndbon.org%2Flicensing%2Faprn%2Faprn%2Dlicense%2F&rut=dc32425f04359b088e218f5a081c7625bfafbc14c6944d2aaf85e32220a88f13"
+      },
+      {
+        "title": "Instructions for Downloading Forms - Health and Human Services North Dakota",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.hhs.nd.gov%2Finstructions%2Ddownloading%2Dforms&rut=d25f6cbf323f453347f0aa2654e781de0e2171e70852ed90bb9645f93242cefb"
+      },
+      {
+        "title": "PDFNorth Dakota Initial Credentialing Application Form",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fcontent%2Dservices.deltadentalmn.org%2Flibrary%2FND%2DUniform%2DInitial%2DCredentialing%2DApplication.pdf&rut=4a2bff99879ed0cf60fdee8f2a18f68bd3478b31567d75d603b81f88e4b02d8c"
+      },
+      {
+        "title": "Fillable Online North Dakota Initial Credentialing Application Form Fax ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.pdffiller.com%2F572231237%2D%2DNorth%2DDakota%2DInitial%2DCredentialing%2DApplication%2DForm%2D&rut=63c1cd562b2b97284e40ae7fbd54ee5d9f572af58a8504cd5fa5a525e2333c6a"
+      }
+    ],
+    "suggested_urls": [
+      "https://doh.sd.gov/boards/nursing/applications",
+      "https://doh.sd.gov/boards/nursing/forms",
+      "https://doh.sd.gov/boards/nursing/licensing",
+      "https://doh.sd.gov/boards/nursing/apply",
+      "https://doh.sd.gov/boards/nursing/downloads"
+    ]
+  },
+  {
+    "state": "UT",
+    "state_name": "Utah",
+    "license_type": "NP",
+    "app_type": "Initial",
+    "board_url": "https://dopl.utah.gov/nursing",
+    "search_results": [
+      {
+        "title": "Apply for a Nursing License - commerce.utah.gov",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fcommerce.utah.gov%2Fdopl%2Fnursing%2Fapply%2Dfor%2Da%2Dlicense%2F&rut=11857c5e2f9cbc295f91d12ca3b48fd97caa3c6fdd716f0f2b10625220007980"
+      },
+      {
+        "title": "Utah Nurse Practitioner Licensure Steps",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.nursepractitionerlicense.com%2Fnurse%2Dpractitioner%2Dlicensing%2Dguides%2Futah%2Dnurse%2Dpractitioner%2Dlicensure%2Dsteps%2F&rut=e15df28fa1b9743847a52e1f6fa3df8a6bdf1863a75e5b9d8b0fd37169617244"
+      },
+      {
+        "title": "Nursing Licensure Process-Initial Licensure as a Nurse in Utah:",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fadvisement.nursing.byu.edu%2F00000189%2D27ce%2Dd67d%2Dab9f%2Db7ee16490001%2Frn%2Dlicensing%2Dinstructions&rut=4b98c6f67a3bae750be113710e3b8957ba745ec729d60f6b15deaef8bbe1eb0f"
+      },
+      {
+        "title": "Utah Nursing License & Board of Nursing Guide - Trusted Health",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.trustedhealth.com%2Fnurse%2Dlicensure%2Dguide%2Futah&rut=22b9bf7444487dabc5d4aa074c741acadf6faa9329930ed90f0ef4a9c0d9c5e2"
+      },
+      {
+        "title": "Registered Nurse or Licensed Practical Nurse - Utah",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fcommerce.utah.gov%2Fdopl%2Fnursing%2Fapply%2Dfor%2Da%2Dlicense%2Fregistered%2Dnurse%2Dor%2Dlicensed%2Dpractical%2Dnurse%2F&rut=fdda852d608c6ccce2075d26fcba52dcf9a8bc1ec2808259cadf3aea50d7469f"
+      }
+    ],
+    "suggested_urls": [
+      "https://dopl.utah.gov/nursing/applications",
+      "https://dopl.utah.gov/nursing/forms",
+      "https://dopl.utah.gov/nursing/licensing",
+      "https://dopl.utah.gov/nursing/apply",
+      "https://dopl.utah.gov/nursing/downloads"
+    ]
+  },
+  {
+    "state": "WA",
+    "state_name": "Washington",
+    "license_type": "NP",
+    "app_type": "Initial",
+    "board_url": "https://www.doh.wa.gov/licensespermitsandcertificates/nursingcommission",
+    "search_results": [
+      {
+        "title": "PDFWashington Practitioner Application - fchn.com",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.fchn.com%2FDocuments%2FPPO%2FProviders%2FCredentialing%2F20071001%2520%2D%2520WA_Practitioner_Initial_App.pdf&rut=9d38984d24cf14b59f8aaa8bb46e22ccb74d715447100bcfa67fddfb7d39fb45"
+      },
+      {
+        "title": "Notary Public Commission Application - WA State Licensing (DOL)",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fdol.wa.gov%2Fforms%2Fview%2F659007%2Fdownload%3Finline&rut=4fcb7669323deb2e367407d379ce41b93a56e6ae747b39db5eeae831c0395513"
+      },
+      {
+        "title": "2019-2025 Form WA Practitioner Application Fill Online, Printable ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwa%2Dpractitioner%2Dapplication.pdffiller.com%2F&rut=726728c6b6a6d7d04e414333cc10fc5921fd2aef55a431b325c97866355ef9ee"
+      },
+      {
+        "title": "State Nurse Practitioner Licensure Forms - Office of Certification ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Facademicguides.waldenu.edu%2Ffieldexperience%2Fson%2Foclc%2FstateNPlicensureforms&rut=9ccd9d8f275cda231e22c25fc795c35d0d535809011722671f020c1ccf06aeb6"
+      },
+      {
+        "title": "Washington Practitioner Application Fillable - Fill and Sign Printable ...",
+        "url": "//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.uslegalforms.com%2Fform%2Dlibrary%2F168320%2Dwashington%2Dpractitioner%2Dapplication%2Dfillable&rut=835bfbe8081c23a167937e80f3d9feda123ae464f3bd67e01cad555522531b5d"
+      }
+    ],
+    "suggested_urls": [
+      "https://www.doh.wa.gov/licensespermitsandcertificates/nursingcommission/applications",
+      "https://www.doh.wa.gov/licensespermitsandcertificates/nursingcommission/forms",
+      "https://www.doh.wa.gov/licensespermitsandcertificates/nursingcommission/licensing",
+      "https://www.doh.wa.gov/licensespermitsandcertificates/nursingcommission/apply",
+      "https://www.doh.wa.gov/licensespermitsandcertificates/nursingcommission/downloads"
+    ]
+  }
+];
+        
+        // Load form data
+        function loadForms() {
+            try {
+                allForms = embeddedFormData;
+                filteredForms = [...allForms];
+                updateStats();
+                renderForms();
+                document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString();
+            } catch (error) {
+                console.error('Error loading forms:', error);
+                document.getElementById('formGrid').innerHTML = 
+                    '<div class="no-results">Error loading form data.</div>';
+            }
+        }
+        
+        function updateStats() {
+            const states = new Set(allForms.map(f => f.state)).size;
+            const types = new Set(allForms.map(f => f.license_type)).size;
+            
+            document.getElementById('totalForms').textContent = allForms.length;
+            document.getElementById('totalStates').textContent = states;
+            document.getElementById('totalTypes').textContent = types;
+        }
+        
+        function renderForms() {
+            const grid = document.getElementById('formGrid');
+            const noResults = document.getElementById('noResults');
+            
+            if (filteredForms.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            grid.style.display = 'grid';
+            noResults.style.display = 'none';
+            
+            grid.innerHTML = filteredForms.map(form => {
+                const badgeColor = getBadgeColor(form.license_type);
+                const stateName = form.state_name || form.state;
+                const licenseType = form.license_type || 'Unknown';
+                const appType = form.app_type || 'Application';
+                
+                let boardLinks = '';
+                if (form.board_url) {
+                    const boardUrl = form.board_url.startsWith('http') ? form.board_url : `https://${form.board_url}`;
+                    boardLinks = `<a href="${boardUrl}" target="_blank" class="board-link">Official Board Website</a>`;
+                }
+                
+                if (form.suggested_urls && form.suggested_urls.length > 0) {
+                    form.suggested_urls.slice(0, 3).forEach(url => {
+                        boardLinks += `<a href="${url}" target="_blank" class="board-link">Suggested Link</a>`;
+                    });
+                }
+                
+                let searchLinks = '';
+                if (form.search_results && form.search_results.length > 0) {
+                    searchLinks = '<div class="search-results"><div class="search-results-title">Search Results:</div>';
+                    form.search_results.slice(0, 3).forEach(result => {
+                        const url = result.url.startsWith('http') ? result.url : `https:${result.url}`;
+                        searchLinks += `<a href="${url}" target="_blank" class="search-link">${result.title}</a>`;
+                    });
+                    searchLinks += '</div>';
+                }
+                
+                return `
+                    <div class="form-card" data-state="${form.state}" data-type="${form.license_type}" data-app="${form.app_type}">
+                        <div class="form-header">
+                            <div>
+                                <div class="form-title">${stateName}</div>
+                                <div class="form-info">${licenseType} - ${appType}</div>
+                            </div>
+                            <span class="form-badge" style="background: ${badgeColor}">${form.state}</span>
+                        </div>
+                        ${boardLinks}
+                        ${searchLinks}
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function getBadgeColor(licenseType) {
+            const colors = {
+                'RN': '#667eea',
+                'NP': '#764ba2',
+                'MD': '#f093fb',
+                'CSR': '#4facfe',
+                'CDS': '#43e97b',
+                'ARNP': '#fa709a',
+                'FNP': '#fee140'
+            };
+            return colors[licenseType] || '#667eea';
+        }
+        
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            filterForms(searchTerm);
+        });
+        
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                filterByType(filter);
+            });
+        });
+        
+        function filterForms(searchTerm) {
+            filteredForms = allForms.filter(form => {
+                const state = (form.state_name || form.state || '').toLowerCase();
+                const license = (form.license_type || '').toLowerCase();
+                const appType = (form.app_type || '').toLowerCase();
+                const searchText = `${state} ${license} ${appType}`;
+                return searchText.includes(searchTerm);
+            });
+            renderForms();
+        }
+        
+        function filterByType(filter) {
+            if (filter === 'all') {
+                filteredForms = [...allForms];
+            } else {
+                filteredForms = allForms.filter(form => 
+                    form.license_type === filter || form.app_type === filter
+                );
+            }
+            document.getElementById('searchInput').value = '';
+            renderForms();
+        }
+        
+        // Initialize
+        loadForms();
+    </script>
+</body>
+</html>
+

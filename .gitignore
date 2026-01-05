@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# PDF files (original filled forms - don't commit these)
+*.pdf
+!README.pdf
+
+# Test files
+*test*.pdf
+*_cleared.pdf
+*_flattened.pdf
+*_purged.pdf
+*_BLANK.pdf
+
+# Directories with processed PDFs
+cleared_pdfs/
+purged_pdfs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
